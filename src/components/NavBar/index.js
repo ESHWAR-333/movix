@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
-import MovieContext from "../../context/MovieContext";
 
 const NavBar = () => {
   const [inputs, setInput] = useState("");
@@ -28,6 +27,7 @@ const NavBar = () => {
           onChange={(e) => {
             setInput(e.target.value);
           }}
+          value={inputs}
         />
         <button className="navbar-search-button">Search</button>
       </div>

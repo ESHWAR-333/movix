@@ -7,8 +7,8 @@ const MovieDetails = () => {
   const [details, setDetails] = useState([]);
   const [gener, setGener] = useState([]);
   const [cast, setCast] = useState([]);
-  const [curr, setCurr] = useState(1);
-  const [per, setPer] = useState(6);
+  // const [curr, setCurr] = useState(1);
+  // const [per, setPer] = useState(6);
   const params = useParams();
 
   useEffect(() => {
@@ -32,6 +32,7 @@ const MovieDetails = () => {
       setGener(updatedgener);
       setDetails(movedetails);
 
+      //eslint-disable-next-line
       const url2 = `https://api.themoviedb.org/3/movie/${params.id}/credits?api_key=a7c8156f3d026a47ba3ae3028fc1d515&language=en-US`;
       // eslint-disable-next-line
       const res2 = await fetch(url2);
@@ -42,6 +43,8 @@ const MovieDetails = () => {
     fetching();
   }, []);
 
+  const curr = 1;
+  const per = 6;
   const indexlast = curr * per;
   const indexFirst = indexlast - per;
   const currlist = cast.slice(indexFirst, indexlast);
