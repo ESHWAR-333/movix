@@ -32,15 +32,15 @@ const MovieDetails = () => {
       setGener(updatedgener);
       setDetails(movedetails);
 
-      //eslint-disable-next-line
       const url2 = `https://api.themoviedb.org/3/movie/${params.id}/credits?api_key=a7c8156f3d026a47ba3ae3028fc1d515&language=en-US`;
-      // eslint-disable-next-line
+
       const res2 = await fetch(url2);
       const data2 = await res2.json();
       let updatedData = [...data2.cast];
       setCast(updatedData);
     };
     fetching();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const curr = 1;
