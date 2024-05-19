@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Home from "./components/Home";
+import NavBar from "./components/NavBar";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Popular from "./components/Popular";
+import TopRated from "./components/TopRated";
+import Upcoming from "./components/Upcoming";
+import MovieDetails from "./components/MovieDetails";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+import { Component } from "react";
+import MovieContext from "./context/MovieContext.js";
+
+class App extends Component {
+  state = { input: "" };
+
+  navInput = (e) => {
+    this.setState({ input: e });
+  };
+
+  render() {
+    const { input } = this.state;
+    return (
+      <Router>
+        <MovieContext.Provider
+          value={{
+            input,
+            navInput: this.navInput,
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          <>
+            <NavBar />
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/popular" element={<Popular />} />
+              <Route exact path="/toprated" element={<TopRated />} />
+              <Route exact path="/upcoming" element={<Upcoming />} />
+              <Route
+                exact
+                path="/moviedetails/:id"
+                element={<MovieDetails />}
+              />
+            </Routes>
+          </>
+        </MovieContext.Provider>
+      </Router>
+    );
+  }
 }
 
 export default App;

@@ -1,0 +1,9 @@
+.home-main-contaner {
+  background-color: #282b33;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
